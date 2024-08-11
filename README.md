@@ -22,13 +22,15 @@
 # e instrucciones sobre como ejecutar la prueba.
 
 ## Instrucciones y funciones para realizar las pruebas
-# Para el archivo "main.py" se cuenta con:
-# La importacion de todas las librerias necesarias para correr las pruebas (en las primeras 9 lineas de codigo).
+# Para el archivo "helpers.py" se cuenta con:
 # La funcion "retrieve_phone_code" devuelve un número de confirmación de teléfono como un string, necesario en una
 # de las pruebas que se explicaran mas adelante.
+# Para el archivo "urban_routes_page.py" se cuenta con:
 # La clase "UrbanRoutesPage" almacena los localizadores necesarios que permitiran interactuar con la pagina, asi
 # como tambien a las funciones basicas (hacer click, rellenar un campo, esperar que aparezca un indicador, confirmar
 # un dato colocado en un campo, etc.)
+# Para el archivo "main.py" se cuenta con:
+# La importacion de todas las librerias necesarias para correr las pruebas (en las primeras lineas de codigo).
 # La clase "TestUrbanRoutes" contiene la subclase setup_class que permite mantener un registro adicional para
 # recuperar el codigo enviado al numero de telefono registrado en la pagina.
 # La clase "TestUrbanRoutes" almacena las pruebas a realizar dentro de la pagina.

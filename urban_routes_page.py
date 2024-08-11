@@ -10,9 +10,11 @@ class UrbanRoutesPage:
     flash_mode = (By.XPATH, "//div[text()='Flash']")
     ask_for_a_taxi_button = (By.XPATH, "//button[text()='Pedir un taxi']")
     comfort_fee_button = (By.XPATH, "//div[@class='tcard-title' and text()='Comfort']")
+    active_comfort_fee_button = ((By.XPATH, "//div[text()='Comfort']"))
     # Indicadores para agregar número de teléfono
     telephone_number_button = (By.CLASS_NAME, 'np-button')
     telephone_number_space = (By.ID, 'phone')
+    telephone_number_reserved = (By.XPATH, "//div[@class='np-text' and text()='+1 123 123 12 12']")
     next_button_telephone_menu = (By.CSS_SELECTOR, "button.button.full")
     telephone_code_received = (By.ID, 'code')
     confirm_telephone_code_button = (By.XPATH, "//button[text()='Confirmar']")
@@ -24,6 +26,7 @@ class UrbanRoutesPage:
     payment_method_confirmation = (By.XPATH, "//button[text()='Agregar']")
     any_part_payment_method_zone = (By.CLASS_NAME, 'plc')
     close_payment_method_window = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[1]/button')
+    card_label_confirmation = (By.XPATH, "//div[@class='pp-value-text' and text()='Tarjeta']")
     # Indicadores para dejar mensaje al conductor
     message_for_driver = (By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[3]/div')
     label_for_driver = (By.XPATH, '/html/body/div/div/div[3]/div[3]/div[2]/div[2]/div[3]/div/input')
@@ -72,12 +75,18 @@ class UrbanRoutesPage:
     def click_comfort_fee(self):
         self.driver.find_element(*self.comfort_fee_button).click()
 
+    def comfort_fee_active(self):
+        return self.driver.find_element(*self.active_comfort_fee_button).get_attribute('value')
+
     # Tercera prueba
     def click_telephone_number_button(self):
         self.driver.find_element(*self.telephone_number_button).click()
 
     def set_a_telephone_number(self, phone_number):
         self.driver.find_element(*self.telephone_number_space).send_keys(phone_number)
+
+    def telephone_number_active(self):
+        return self.driver.find_element(*self.telephone_number_reserved).get_attribute('value')
 
     def get_telephone_number(self):
         return self.driver.find_element(*self.telephone_number_space).get_attribute('value')
@@ -122,6 +131,9 @@ class UrbanRoutesPage:
 
     def click_close_into_payment_window(self):
         self.driver.find_element(*self.close_payment_method_window).click()
+
+    def get_card_at_menu(self):
+        return self.driver.find_element(*self.card_label_confirmation).get_attribute('value')
 
     # Quinta prueba
     def click_in_message_for_driver_option(self):

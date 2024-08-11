@@ -1,6 +1,32 @@
 import json
 import time
-from selenium.common import WebDriverException
+from selenium.common.exceptions import WebDriverException
+from selenium.webdriver.support import expected_conditions as ec
+from selenium.webdriver.support.wait import WebDriverWait
+
+class WebDriverUtils:
+    def __init__(self, driver):
+        self.driver = driver
+
+    def wait_for_element(self, by, value, timeout=10):
+        """Espera hasta que un elemento esté presente en el DOM."""
+        return WebDriverWait(self.driver, timeout).until(ec.presence_of_element_located((by, value)))
+
+    def wait_for_element_to_be_clickable(self, by, value, timeout=10):
+        """Espera hasta que un elemento sea clickable."""
+        return WebDriverWait(self.driver, timeout).until(ec.element_to_be_clickable((by, value)))
+
+    def wait_for_element_to_be_clickable_2(self, by, value, timeout=10):
+        """Espera hasta que un elemento sea clickable (duplicado de la anterior)."""
+        return WebDriverWait(self.driver, timeout).until(ec.element_to_be_clickable((by, value)))
+
+    def wait_for_element_to_be_visible(self, by, value, timeout=40):
+        """Espera hasta que un elemento sea visible en el DOM."""
+        return WebDriverWait(self.driver, timeout).until(ec.visibility_of_element_located((by, value)))
+
+    def wait_for_element_to_be_visible_2(self, by, value, timeout=40):
+        """Espera hasta que un elemento sea visible en el DOM (duplicado de la anterior)."""
+        return WebDriverWait(self.driver, timeout).until(ec.visibility_of_element_located((by, value)))
 
 
 def retrieve_phone_code(driver) -> str:
@@ -26,3 +52,5 @@ def retrieve_phone_code(driver) -> str:
                             "Utiliza 'retrieve_phone_code' solo después de haber" 
                             "solicitado el código en tu aplicación.")
         return code
+
+    # Las siguientes son funciones que permiten realizar esperas en las pruebas

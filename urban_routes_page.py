@@ -10,7 +10,8 @@ class UrbanRoutesPage:
     flash_mode = (By.XPATH, "//div[text()='Flash']")
     ask_for_a_taxi_button = (By.XPATH, "//button[text()='Pedir un taxi']")
     comfort_fee_button = (By.XPATH, "//div[@class='tcard-title' and text()='Comfort']")
-    active_comfort_fee_button = ((By.XPATH, "//div[text()='Comfort']"))
+    active_comfort_fee_button = (By.XPATH, "//div[text()='Comfort']")
+    comfort_Fee_button_confirmation = (By.XPATH, "//div[@class='r-sw-label' and text()='Manta y pañuelos']")
     # Indicadores para agregar número de teléfono
     telephone_number_button = (By.CLASS_NAME, 'np-button')
     telephone_number_space = (By.ID, 'phone')

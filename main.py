@@ -35,10 +35,10 @@ class TestUrbanRoutes:
         self.webdriver_times.wait_for_element_to_be_clickable(*routes_page.flash_mode).click()
         self.webdriver_times.wait_for_element_to_be_clickable(*routes_page.ask_for_a_taxi_button).click()
         self.webdriver_times.wait_for_element_to_be_clickable(*routes_page.comfort_fee_button).click()
-        active_comfort_container = self.webdriver_times.wait_for_element_to_be_clickable(
-            *routes_page.active_comfort_fee_button)
-        comfort_title_text = active_comfort_container.text  # Obtén el texto directamente del WebElement
-        assert comfort_title_text == "Comfort"  # Compara el texto
+        comfort_fee_confirmation = self.webdriver_times.wait_for_element_to_be_visible(*routes_page.comfort_Fee_button_confirmation)
+        mantas_y_panuelo = comfort_fee_confirmation.text
+        assert mantas_y_panuelo == 'Manta y pañuelos'
+
 
     def test_fill_phone_number(self):
         self.test_comfort_fee()

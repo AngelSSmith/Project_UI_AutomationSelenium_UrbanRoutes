@@ -1,5 +1,5 @@
 .pytest/
 venv/
 .idea/
-.pytest_cache/
+__pycache__
 D:\pythonproyectcharm\api_stand_tests
